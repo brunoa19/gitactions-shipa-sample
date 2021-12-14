@@ -1,0 +1,19 @@
+framework:
+  name: gha-policy1
+  resources:
+    general:
+      setup:
+        provisioner: kubernetes
+      router: traefik
+      appQuota:
+        limit: "4"
+      security:
+        disableScan: true
+      networkPolicy:
+        ingress:
+          policy_mode: deny-all
+        egress:
+          policy_mode: deny-all
+        disableAppPolicies: false
+      access:
+        append: ["shipa-team"]

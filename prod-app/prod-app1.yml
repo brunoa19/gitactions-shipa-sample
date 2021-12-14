@@ -1,0 +1,27 @@
+app:
+  name: app1
+  teamowner: shipa-team
+  framework: aks-prod
+
+app-env:
+  app: app1
+  envs:
+    - name: CR_ENV1
+      value: test-1
+    - name: CR_ENV3
+      value: test-3
+  norestart: true
+  private: false
+
+network-policy:
+  app: app1
+  ingress:
+    policy_mode: allow-all
+  egress:
+    policy_mode: allow-all
+  restart_app: false
+
+app-deploy:
+  app: app1
+  image: ghcr.io/stefanprodan/podinfo:6.0.3
+  port: 9898
